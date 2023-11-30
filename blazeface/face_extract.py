@@ -72,7 +72,8 @@ class FaceExtractor:
         frameref_detections = self._add_margin_to_detections(detections[0], frame_size, 0.2)
         faces = self._crop_faces(img, frameref_detections)
         kpts = self._crop_kpts(img, detections[0], 0.3)
-
+        del img
+        
         # Add additional information about the frame and detections.
         scores = list(detections[0][:, 16].cpu().numpy())
         frame_dict = {"frame_w": frame_size[0],
