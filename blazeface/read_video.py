@@ -48,7 +48,7 @@ class VideoReader:
         capture.release()
         return result
 
-    def read_random_frames(self, path, num_frames, seed=None):
+    def read_random_frames(self, path, num_frames, offset=0, seed=None):
         """Picks the frame indices at random.
         
         Arguments:
@@ -63,7 +63,7 @@ class VideoReader:
         frame_count = int(capture.get(cv2.CAP_PROP_FRAME_COUNT))
         if frame_count <= 0: return None
 
-        frame_idxs = sorted(np.random.choice(np.arange(0, frame_count), num_frames))
+        frame_idxs = sorted(np.random.choice(np.arange(offset, frame_count), num_frames))
         result = self._read_frames_at_indices(path, capture, frame_idxs)
 
         capture.release()
