@@ -158,7 +158,7 @@ def get_transformer(face_policy: str, patch_size: int, net_normalizer: transform
         ]
         if train:
             downsample_train_transformations = [
-                A.Downscale(scale_max=0.5, scale_min=0.5, p=0.5),  # replaces scaled dataset
+                A.Downscale(scale_max=0.5, scale_min=0.5, p=0.5, interpolation=cv2.INTER_LINEAR),  # replaces scaled dataset
             ]
         else:
             downsample_train_transformations = []
@@ -171,7 +171,7 @@ def get_transformer(face_policy: str, patch_size: int, net_normalizer: transform
         ]
         if train:
             downsample_train_transformations = [
-                A.Downscale(scale_max=0.5, scale_min=0.5, p=0.5),  # replaces scaled dataset
+                A.Downscale(scale_max=0.5, scale_min=0.5, p=0.5, interpolation=cv2.INTER_LINEAR),  # replaces scaled dataset
             ]
         else:
             downsample_train_transformations = []
